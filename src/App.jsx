@@ -14,7 +14,8 @@ import Blog from './pages/Blog';
 import SignIn from './pages/SignIn';  // Correct import path
 import SignUp from './pages/SignUp';  // Correct import path
 import Freelance from './pages/Freelance';  // Add this import
-import About from './pages/About';  // Add this import
+import About from './pages/About';
+import Careers from './pages/Careers';  // Add this import
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/freelance" element={<Freelance />} />  
             <Route path="/about" element={<About />} />
+            <Route path="/careers" element={<Careers />} />
           </Routes>
         </main>
         <Footer />
