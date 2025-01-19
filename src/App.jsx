@@ -28,10 +28,15 @@ import Designers from './pages/Designers';
 import Company from './pages/Company';
 import Advertise from './pages/Advertise';
 import Contact from './pages/contact-us';
+import FaviconImage from './assets/favicon.ico';
+import Favicon from "react-favicon";
+
 
 const App = () => {
   return (
     <Router>
+      <Favicon url={FaviconImage} />
+
       <div className="app-wrapper max-w-[2000px] mx-auto overflow-hidden">
         <HeaderTop />
         <Header />
