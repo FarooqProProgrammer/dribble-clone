@@ -10,7 +10,6 @@ const Footer = () => {
       { name: 'Explore design work', link: '/explore' },
       { name: 'Design blog', link: '/blog' },
       { name: 'Overtime podcast', link: '/podcast' },
-      { name: 'Playoffs', link: '/playoffs' },
       { name: 'Code of conduct', link: '/conduct' },
     ],
     hireDesigners: [
@@ -29,7 +28,7 @@ const Footer = () => {
       { name: 'Support', link: '/support' },
       { name: 'Media kit', link: '/media-kit' },
       { name: 'Testimonials', link: '/testimonials' },
-      { name: 'API', link: '/api' },
+     
       { name: 'Terms of service', link: '/terms' },
       { name: 'Privacy policy', link: '/privacy' },
     ],
@@ -56,14 +55,14 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
-                <a
+                <Link
                   key={index}
-                  href={social.link}
+                  to={social.link}
                   className="w-8 h-8 flex items-center justify-center rounded-md bg-[#e7e7e9] text-[#6e6d7a] hover:bg-[#ea4c89] hover:text-white transition-all duration-300"
                   aria-label={social.label}
                 >
                   {social.icon}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

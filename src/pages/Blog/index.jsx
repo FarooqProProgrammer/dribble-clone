@@ -1,5 +1,6 @@
 import React from 'react';
 import './Blog.css';
+import { Helmet } from 'react-helmet';
 
 const blogPosts = [
   {
@@ -29,37 +30,45 @@ const blogPosts = [
 
 const Blog = () => {
   return (
-    <div className="blog-container">
-      <div className="blog-header">
-        <h1>Design Blog</h1>
-        <p>Insights and inspiration from the design community</p>
-      </div>
-      
-      <div className="blog-grid">
-        {blogPosts.map(post => (
-          <div key={post.id} className="blog-card">
-            <div className="blog-card-image">
-              <img src={post.image} alt={post.title} />
-            </div>
-            <div className="blog-card-content">
-              <h2>{post.title}</h2>
-              <p>{post.description}</p>
-              <div className="user-details flex items-center space-x-3 mt-4 pt-4 border-t border-gray-200">
-                <img 
-                  src={post.author.avatar} 
-                  alt={post.author.name}
-                  className="w-10 h-10 rounded-full object-cover" 
-                />
-                <div className="flex flex-col justify-center">
-                  <h4 className="text-sm font-medium text-gray-900">{post.author.name}</h4>
-                  <span className="text-xs text-gray-500">{post.author.date}</span>
+    <>
+
+      <Helmet>
+        <title>Blog | Dribbble</title>
+      </Helmet>
+
+      <div className="blog-container">
+        <div className="blog-header">
+          <h1>Design Blog</h1>
+          <p>Insights and inspiration from the design community</p>
+        </div>
+
+        <div className="blog-grid">
+          {blogPosts.map(post => (
+            <div key={post.id} className="blog-card">
+              <div className="blog-card-image">
+                <img src={post.image} alt={post.title} />
+              </div>
+              <div className="blog-card-content">
+                <h2>{post.title}</h2>
+                <p>{post.description}</p>
+                <div className="user-details flex items-center space-x-3 mt-4 pt-4 border-t border-gray-200">
+                  <img
+                    src={post.author.avatar}
+                    alt={post.author.name}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div className="flex flex-col justify-center">
+                    <h4 className="text-sm font-medium text-gray-900">{post.author.name}</h4>
+                    <span className="text-xs text-gray-500">{post.author.date}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+
+    </>
   );
 }
 

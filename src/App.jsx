@@ -16,6 +16,18 @@ import SignUp from './pages/SignUp';  // Correct import path
 import Freelance from './pages/Freelance';  // Add this import
 import About from './pages/About';
 import Careers from './pages/Careers';  // Add this import
+import Support from './pages/Support';
+import MediaKit from './pages/MediaKit';
+import Testimonial from './pages/Testimonial';
+import Terms from './pages/Terms';  // Add this import
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Explore from './pages/Explore';
+import Podcast from './pages/Podcast';
+import Conduct from './pages/Conduct';
+import Designers from './pages/Designers';
+import Company from './pages/Company';
+import Advertise from './pages/Advertise';
+import Contact from './pages/contact-us';
 
 const App = () => {
   return (
@@ -37,6 +49,18 @@ const App = () => {
             <Route path="/freelance" element={<Freelance />} />  
             <Route path="/about" element={<About />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/media-kit" element={<MediaKit />} />
+            <Route path="/testimonials" element={<Testimonial />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/podcast" element={<Podcast />} />
+            <Route path="/conduct" element={<Conduct />} />
+            <Route path="/designers" element={<Designers />} />
+            <Route path="/company" element={<Company />} />
+            <Route path="/advertise" element={<Advertise />} />
+            <Route path="/contact-us" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
@@ -46,3 +70,4 @@ const App = () => {
 }
 
 export default App;
+

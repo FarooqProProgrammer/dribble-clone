@@ -1,7 +1,7 @@
 import React from 'react';
 import { CiSearch } from "react-icons/ci";
 import { motion } from 'framer-motion';
-import { FaChevronRight, FaPlay, FaArrowRight } from 'react-icons/fa';
+import { FaChevronRight, FaPlay } from 'react-icons/fa';
 import "./index.css";
 
 const Hero = () => {

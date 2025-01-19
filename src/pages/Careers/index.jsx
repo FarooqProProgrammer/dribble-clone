@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet';
 
 const Careers = () => {
   const jobs = [
@@ -16,49 +17,59 @@ const Careers = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <div className="bg-pink-50 py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">Join our team</h1>
-          <p className="text-xl text-gray-600 max-w-2xl">
-            Help us build the world's leading community for creatives to share, grow, and get hired.
-          </p>
+    <>
+
+
+      <Helmet>
+        <title>Careers | Dribbble</title>
+      </Helmet>
+
+
+      <div className="min-h-screen">
+        {/* Hero Section */}
+        <div className="bg-pink-50 py-20">
+          <div className="max-w-6xl mx-auto px-4">
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">Join our team</h1>
+            <p className="text-xl text-gray-600 max-w-2xl">
+              Help us build the world's leading community for creatives to share, grow, and get hired.
+            </p>
           </div>
-       
-      </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8">Open Positions</h2>
-        <div className="grid gap-4">
-          {jobs.map((job, index) => (
-            <div key={index} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">{job.title}</h3>
-              <div className="flex gap-4 text-gray-600">
-                <span>{job.location}</span>
-                <span>•</span>
-                <span>{job.type}</span>
-              </div>
-            </div>
-          ))}
         </div>
-      </div>
 
-      {/* Benefits Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Why work with us</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center">
-                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+        <div className="max-w-6xl mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold mb-8">Open Positions</h2>
+          <div className="grid gap-4">
+            {jobs.map((job, index) => (
+              <div key={index} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold mb-2">{job.title}</h3>
+                <div className="flex gap-4 text-gray-600">
+                  <span>{job.location}</span>
+                  <span>•</span>
+                  <span>{job.type}</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Benefits Section */}
+        <div className="bg-gray-50 py-16">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-12 text-center">Why work with us</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="text-center">
+                  <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600">{benefit.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
+
   )
 }
 

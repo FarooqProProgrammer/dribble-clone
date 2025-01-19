@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheck, FiStar, FiAward, FiZap } from 'react-icons/fi';
+import { Helmet } from 'react-helmet';
 
 const GoPro = () => {
   const plans = [
@@ -48,7 +49,12 @@ const GoPro = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+    <>
+
+    <Helmet>
+      <title>Go Pro | Dribble</title>
+    </Helmet>
+     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -118,6 +124,8 @@ const GoPro = () => {
         </button>
       </motion.div>
     </div>
+    </>
+   
   );
 };
 
