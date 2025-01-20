@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { FiUsers, FiGrid, FiGlobe, FiAward } from 'react-icons/fi';
+import PageComponent from '../../components/PageComponent';
 
 const About = () => {
   const stats = [
@@ -73,7 +74,7 @@ const About = () => {
       </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         {/* Hero Section */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
@@ -82,7 +83,12 @@ const About = () => {
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Dribbble is the world's leading community for creatives to share, grow, and get hired.
           </p>
-        </motion.div>
+        </motion.div> */}
+
+        <PageComponent 
+          title={'About Dribbble'}
+          description={'Dribbble is the world\'s leading community for creatives to share, grow, and get hired.'}
+        />
 
         {/* Stats Section */}
         <motion.div 

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Blog.css';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const blogPosts = [
   {
@@ -37,10 +38,16 @@ const Blog = () => {
       </Helmet>
 
       <div className="blog-container">
-        <div className="blog-header">
+        {/* <div className="blog-header">
           <h1>Design Blog</h1>
           <p>Insights and inspiration from the design community</p>
         </div>
+         */}
+
+         <PageComponent
+          title={'Design Blog'}
+          description={'Insights and inspiration from the design community'}  />
+         
 
         <div className="blog-grid">
           {blogPosts.map(post => (

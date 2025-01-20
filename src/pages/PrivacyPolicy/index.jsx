@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import PageComponent from '../../components/PageComponent';
 
 const PrivacyPolicy = () => {
     const privacySections = [
@@ -51,10 +52,16 @@ const PrivacyPolicy = () => {
 
             <div className="bg-gray-50 min-h-screen py-16 px-4">
                 <div className="max-w-4xl mx-auto">
-                    <div className="text-center mb-12">
+                    {/* <div className="text-center mb-12">
                         <h1 className="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
                         <p className="text-gray-600">Last updated: {new Date().toLocaleDateString()}</p>
-                    </div>
+                    </div> */}
+
+                    <PageComponent 
+                        title={'Privacy Policy'}
+                        description={'At Dribbble, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service.'}
+                    />
+                    
 
                     <div className="bg-white rounded-xl shadow-lg p-8">
                         <div className="mb-8">

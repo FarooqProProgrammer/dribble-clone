@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import PageComponent from '../../components/PageComponent';
 
 const Company = () => {
     const stats = [
@@ -58,16 +59,14 @@ const Company = () => {
 
 
             <div className="min-h-screen bg-gray-50">
-                {/* Hero Section */}
-                <div className="bg-[#EA4C89] text-white py-20 px-4">
-                    <div className="max-w-6xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                            Empowering the World's Design Community
-                        </h1>
-                        <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-                            Dribbble is where the world's top designers share, grow, and get hired.
-                        </p>
-                    </div>
+               
+                <div className="sm:pt-10 pt-5">
+                <PageComponent 
+                    title={'Empowering the World\'s Design Community'}
+                    description={'Dribbble is where the world\'s top designers share, grow, and get hired.'}
+                    
+                />
+
                 </div>
 
                 {/* Stats Section */}

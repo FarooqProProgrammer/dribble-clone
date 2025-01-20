@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { FiDownload, FiUsers, FiEye, FiHeart, FiGlobe } from 'react-icons/fi'
+import PageComponent from '../../components/PageComponent'
 
 const MediaKit = () => {
   const stats = [
@@ -42,13 +43,11 @@ const MediaKit = () => {
 
       <div className="min-h-screen">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-pink-50 to-purple-50 py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6 text-center">Media Kit</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
-              Everything you need to know about our brand. Access logos, brand guidelines, and media assets.
-            </p>
-          </div>
+        <div className=" py-10">
+          <PageComponent 
+            title={'Media Kit'}
+            description={'Get the latest stats, brand assets, and press resources for Dribbble. Contact our press team for additional inquiries.'}
+          />
         </div>
 
         {/* Stats Section */}

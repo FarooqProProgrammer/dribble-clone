@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const Podcast = () => {
   const episodes = [
@@ -45,13 +46,12 @@ const Podcast = () => {
 
       <div className="min-h-screen bg-gray-50 py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Overtime Podcast</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Conversations with the world's best designers, artists, and creative professionals about their work, process, and future of design.
-            </p>
-          </div>
+         
+          <PageComponent 
+          
+            title={'Overtime Podcast'}
+            description={'Conversations with the world\'s best designers, artists, and creative professionals about their work, process, and future of design.'}
+          />
 
           {/* Featured Episode */}
           <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 mb-8 sm:mb-12">

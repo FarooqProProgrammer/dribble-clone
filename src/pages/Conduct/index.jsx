@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const Conduct = () => {
   const guidelines = [
@@ -27,8 +28,6 @@ const Conduct = () => {
 
   return (
     <>
-
-
       <Helmet>
         <title>Code of Conduct | Dribbble</title>
       </Helmet>
@@ -36,13 +35,10 @@ const Conduct = () => {
       <div className="min-h-screen bg-gray-50 py-16 px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Code of Conduct</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our community guidelines ensure Dribbble remains a respectful, supportive space
-              for designers to share, learn, and grow together.
-            </p>
-          </div>
+          <PageComponent 
+            title={'Code of Conduct'}
+            description={'Our community guidelines ensure Dribbble remains a respectful, supportive space for designers to share, learn, and grow together. We are committed to maintaining a positive and inclusive environment for all members.'}
+          />
 
           {/* Guidelines Grid */}
           <div className="grid gap-8 md:grid-cols-2 mb-12">

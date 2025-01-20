@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const Terms = () => {
   const sections = [
@@ -28,10 +29,15 @@ const Terms = () => {
       </Helmet>
       <div className="bg-gray-50 min-h-screen py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Terms and Services</h1>
             <p className="text-gray-600">Last updated: {new Date().toLocaleDateString()}</p>
-          </div>
+          </div> */}
+          <PageComponent 
+            title={'Terms and Services'}
+            description={'By using our services, you agree to these terms. Please read them carefully. If you have any questions, please contact our support team.'}
+          
+          />
 
           <div className="bg-white rounded-xl shadow-lg p-8">
             {sections.map((section, index) => (
