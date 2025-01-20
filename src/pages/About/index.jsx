@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { FiUsers, FiGrid, FiGlobe, FiAward } from 'react-icons/fi';
 import PageComponent from '../../components/PageComponent';
+import Newsletter from '../../components/Newsletter';
 
 const About = () => {
   const stats = [
@@ -73,88 +74,52 @@ const About = () => {
         <meta name="description" content="Learn more about Dribbble - the world's leading community for creatives to share, grow, and get hired." />
       </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        {/* Hero Section */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">About Dribbble</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Dribbble is the world's leading community for creatives to share, grow, and get hired.
-          </p>
-        </motion.div> */}
 
-        <PageComponent 
+        <PageComponent
           title={'About Dribbble'}
           description={'Dribbble is the world\'s leading community for creatives to share, grow, and get hired.'}
         />
 
-        {/* Stats Section */}
-        <motion.div 
+        {/* Stats Section with improved UI */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-16"
         >
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-4xl text-black mb-2">{stat.icon}</div>
-              <div className="text-3xl font-bold mb-1">{stat.number}</div>
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className="text-center p-6 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.1)] transition-all duration-300"
+            >
+              <div className="text-4xl text-[#EA4C89] mb-3">{stat.icon}</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
               <div className="text-gray-600">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
-        {/* Values Section */}
+        {/* Values Section with improved UI */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
         >
           {values.map((value, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-              <p className="text-gray-600">{value.description}</p>
-            </div>
+            <motion.div
+              key={index}
+              whileHover={{ y: -5 }}
+              className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.1)] transition-all duration-300 border border-gray-100"
+            >
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{value.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{value.description}</p>
+            </motion.div>
           ))}
         </motion.div>
 
-        {/* Timeline Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="my-20"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">Our Journey</h2>
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200"></div>
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 * index }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}
-                >
-                  <div className="w-1/2 px-8">
-                    <div className={`bg-white p-6 rounded-xl shadow-sm ${index % 2 === 0 ? 'text-right' : ''}`}>
-                      <div className="text-2xl font-bold text-black">{milestone.year}</div>
-                      <div className="text-gray-600">{milestone.event}</div>
-                    </div>
-                  </div>
-                  <div className="w-4 h-4 bg-black rounded-full relative z-10"></div>
-                  <div className="w-1/2"></div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Team Section */}
+        {/* Team Section with improved UI */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -168,42 +133,31 @@ const About = () => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -5 }}
                 transition={{ delay: 0.1 * index }}
-                className="bg-white rounded-xl p-6 shadow-sm text-center"
+                className="bg-white rounded-2xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.1)] transition-all duration-300 text-center border border-gray-100"
               >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                <p className="text-gray-600 mb-3">{member.role}</p>
-                <p className="text-sm italic text-gray-500">"{member.quote}"</p>
+                <div className="relative mb-6">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full mx-auto object-cover ring-4 ring-pink-50"
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-500/20 to-purple-500/20 animate-pulse" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{member.name}</h3>
+                <p className="text-[#EA4C89] font-medium mb-3">{member.role}</p>
+                <p className="text-sm italic text-gray-600">"{member.quote}"</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Contact Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="bg-gradient-to-r from-gray-900 to-black text-white rounded-2xl p-12 text-center mt-20"
-        >
-          <h2 className="text-3xl font-bold mb-6">Want to Know More?</h2>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Reach out to our team to learn more about how Dribbble can help you grow your design career or build your design team.
-          </p>
-          <div className="flex justify-center gap-4">
-            <button className="bg-white text-black px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
-              Contact Us
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition-colors">
-              View Careers
-            </button>
-          </div>
-        </motion.div>
+        {/* Newsletter Section */}
+        <div className="mt-20">
+          <Newsletter />
+        </div>
+
       </div>
     </>
   );

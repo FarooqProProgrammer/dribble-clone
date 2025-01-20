@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiSearch, FiFilter, FiBriefcase, FiStar,  FiMapPin } from 'react-icons/fi';
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 const HireDesigner = () => {
   const designers = [
@@ -33,6 +34,8 @@ const HireDesigner = () => {
       specialty: ["Illustration", "Brand Identity", "Motion Design"]
     }
   ];
+
+  const navigate  = useNavigate();
 
   return (
     <>
@@ -124,18 +127,7 @@ const HireDesigner = () => {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-center bg-gray-50 rounded-2xl p-8"
-        >
-          <h2 className="text-2xl font-bold mb-4">Can't find the right designer?</h2>
-          <p className="text-gray-600 mb-6">Post a job and let designers come to you</p>
-          <button className="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors">
-            Post a Job
-          </button>
-        </motion.div>
+       
       </div>
     </>
 

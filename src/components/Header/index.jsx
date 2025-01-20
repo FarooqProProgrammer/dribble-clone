@@ -1,11 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+    const searchRef = useRef(null);
+    const mobileSearchRef = useRef(null);
+
+    // Close search dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchRef.current && !searchRef.current.contains(event.target)) {
+                setIsSearchOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const menuItems = [
         { name: 'Inspiration', path: '/inspiration' },
@@ -17,6 +34,52 @@ const Header = () => {
 
     return (
         <header className='sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100'>
+            {/* Mobile Search Overlay */}
+            <AnimatePresence>
+                {isMobileSearchOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-white z-50 lg:hidden"
+                        ref={mobileSearchRef}
+                    >
+                        <div className="p-4">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="flex items-center gap-3 flex-1">
+                                    <CiSearch className="w-5 h-5 text-gray-400" />
+                                    <input
+                                        type="text"
+                                        placeholder="Search Dribbble..."
+                                        className="w-full bg-transparent outline-none text-sm"
+                                        autoFocus
+                                    />
+                                </div>
+                                <button
+                                    onClick={() => setIsMobileSearchOpen(false)}
+                                    className="p-2 text-gray-500"
+                                >
+                                    <HiX className="w-6 h-6" />
+                                </button>
+                            </div>
+                            <div className="mt-4">
+                                <h3 className="text-xs font-medium text-gray-500 mb-2">POPULAR SEARCHES</h3>
+                                <div className="space-y-2">
+                                    {['landing page', 'ios', 'food', 'landingpage', 'ux design', 'app design'].map((term, index) => (
+                                        <button
+                                            key={index}
+                                            className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                                        >
+                                            {term}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <div className='container mx-auto px-4'>
                 <div className='flex justify-between items-center py-4'>
                     {/* Logo */}
@@ -39,15 +102,55 @@ const Header = () => {
 
                     {/* Desktop Actions */}
                     <div className='hidden lg:flex items-center gap-6'>
-                        <button className='text-[#6e6d7a] hover:text-[#0d0c22] transition-colors duration-300'>
-                            <CiSearch className='w-5 h-5' />
-                        </button>
-                        <button className='text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium transition-colors duration-300'>
+                        <div className="relative" ref={searchRef}>
+                            <button 
+                                className='text-[#6e6d7a] hover:text-[#0d0c22] transition-colors duration-300'
+                                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                            >
+                                <CiSearch className='w-5 h-5' />
+                            </button>
+                            
+                            <AnimatePresence>
+                                {isSearchOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="absolute right-0 mt-2 w-96 bg-white rounded-xl shadow-lg p-4 border border-gray-100"
+                                    >
+                                        <div className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
+                                            <CiSearch className='w-5 h-5 text-gray-400' />
+                                            <input
+                                                type="text"
+                                                placeholder="Search Dribbble..."
+                                                className="w-full bg-transparent outline-none text-sm"
+                                            />
+                                        </div>
+                                        
+                                        <div className="mt-4">
+                                            <h3 className="text-xs font-medium text-gray-500 mb-2">POPULAR SEARCHES</h3>
+                                            <div className="space-y-2">
+                                                {['landing page', 'ios', 'food', 'landingpage', 'ux design', 'app design'].map((term, index) => (
+                                                    <button
+                                                        key={index}
+                                                        className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                                                    >
+                                                        {term}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                        <Link to="/signin" className='text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium transition-colors duration-300'>
                             Sign In
-                        </button>
-                        <button className='bg-[#ea4c89] hover:bg-[#df4881] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300'>
+                        </Link>
+                        <Link to="/signup" className='bg-[#ea4c89] hover:bg-[#df4881] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300'>
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -77,16 +180,22 @@ const Header = () => {
                     </nav>
                     
                     <div className='flex flex-col gap-4 pt-4 border-t border-gray-100'>
-                        <button className='flex items-center gap-2 text-[#6e6d7a] hover:text-[#0d0c22] transition-colors duration-300'>
+                        <button 
+                            className='flex items-center gap-2 text-[#6e6d7a] hover:text-[#0d0c22] transition-colors duration-300'
+                            onClick={() => {
+                                setIsMobileSearchOpen(true);
+                                setIsMenuOpen(false);
+                            }}
+                        >
                             <CiSearch className='w-5 h-5' />
                             <span className='text-sm'>Search</span>
                         </button>
-                        <button className='w-full text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium py-2 transition-colors duration-300'>
+                        <Link to="/signin" className='w-full text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium py-2 transition-colors duration-300'>
                             Sign In
-                        </button>
-                        <button className='w-full bg-[#ea4c89] hover:bg-[#df4881] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300'>
+                        </Link>
+                        <Link to="/signup" className='w-full bg-[#ea4c89] hover:bg-[#df4881] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300'>
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

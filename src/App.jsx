@@ -30,6 +30,7 @@ import Advertise from './pages/Advertise';
 import Contact from './pages/contact-us';
 import FaviconImage from './assets/favicon.ico';
 import Favicon from "react-favicon";
+import JobsNew from './pages/JobsNew';
 
 
 const App = () => {
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="/company" element={<Company />} />
             <Route path="/advertise" element={<Advertise />} />
             <Route path="/contact-us" element={<Contact />} />
+            <Route path="/jobs/new" element={<JobsNew />} /> {/* Update the path */}
           </Routes>
         </main>
         <Footer />
