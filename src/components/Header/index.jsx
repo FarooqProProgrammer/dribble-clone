@@ -105,7 +105,7 @@ const Header = () => {
                         <button className='text-[#6e6d7a] hover:text-[#0d0c22] transition-colors duration-300'>
                             <CiSearch className='w-5 h-5' />
                         </button>
-                        <button className='text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium transition-colors duration-300'>
+                        <Link to="/signin" className='text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium transition-colors duration-300'>
                             Sign In
                         </Link>
                         <Link to="/signup" className='bg-[#ea4c89] hover:bg-[#df4881] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300'>
