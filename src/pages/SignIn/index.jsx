@@ -1,17 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiLock, FiGithub } from 'react-icons/fi';
-import { FcGoogle } from 'react-icons/fc';
+import { FiMail, FiLock } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth';
 
 const SignIn = () => {
+  const { login, isAuthenticated, loading } = useAuth();
+  
+  // Use react-hook-form for form handling and validation
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  // Handle form submission
+  const onSubmit = async (data) => {
+    console.log(data); // Log the form data (email and password)
+    try {
+      // Call login function with the email and password from the form
+      await login(data.email, data.password);
+      // Handle post-login actions (like redirection or showing success)
+    } catch (error) {
+      console.error("Login failed:", error);
+      // Optionally, you can show an error message to the user
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state while checking auth status
+  }
+
   return (
     <>
-
-
       <Helmet>
-        <title>Sigin In | Dribble</title>
+        <title>Sign In | Dribble</title>
       </Helmet>
 
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -30,32 +51,47 @@ const SignIn = () => {
             </p>
           </div>
 
-          <form className="mt-8 space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
             <div className="space-y-4">
+              {/* Email Input */}
               <div className="relative">
                 <FiMail className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="email"
                   placeholder="Email address"
                   className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                  {...register("email", { 
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                      message: "Please enter a valid email address"
+                    }
+                  })}
                 />
+                {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
               </div>
+
+              {/* Password Input */}
               <div className="relative">
                 <FiLock className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="password"
                   placeholder="Password"
                   className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                  {...register("password", { required: "Password is required" })}
                 />
+                {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
               </div>
             </div>
 
+            {/* Remember Me */}
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
                   id="remember-me"
                   type="checkbox"
                   className="h-4 w-4 border-gray-300 rounded"
+                  {...register("rememberMe")}
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me
@@ -66,6 +102,7 @@ const SignIn = () => {
               </Link>
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
               className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 transition-colors"
@@ -73,30 +110,9 @@ const SignIn = () => {
               Sign in
             </button>
           </form>
-
-          <div className="relative mt-8">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">Or continue with</span>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <button className="w-full flex items-center justify-center gap-3 py-2.5 border rounded-lg hover:bg-gray-50 transition-colors">
-              <FcGoogle className="text-xl" />
-              <span>Continue with Google</span>
-            </button>
-            <button className="w-full flex items-center justify-center gap-3 py-2.5 border rounded-lg hover:bg-gray-50 transition-colors">
-              <FiGithub className="text-xl" />
-              <span>Continue with GitHub</span>
-            </button>
-          </div>
         </motion.div>
       </div>
     </>
-
   );
 };
 

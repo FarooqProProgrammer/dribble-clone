@@ -2,8 +2,26 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { FiDollarSign, FiClock, FiBriefcase, FiFileText, FiTag, FiUsers } from 'react-icons/fi';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const Freelance = () => {
+
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => {
+      console.log(data);
+
+      if(!data.projectTitle) return toast("Project title are required")
+      if(!data.projectdescription) return toast("Project title are required")
+      if(!data.porjectBudgetrange) return toast("Project title are required")
+      if(!data.timeline) return toast("Project title are required")
+
+      toast("form submitted success")
+    }
+
+
+
   const categories = [
     "UI/UX Design", "Web Design", "Mobile App Design",
     "Brand Identity", "Illustration", "Motion Design"
@@ -70,13 +88,14 @@ const Freelance = () => {
             className="lg:col-span-2"
           >
             <div className="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Project Title
                   </label>
                   <input
                     type="text"
+                    {...register("projectTitle")}
                     placeholder="Enter a clear title for your project"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                   />
@@ -88,6 +107,7 @@ const Freelance = () => {
                   </label>
                   <textarea
                     rows="4"
+                    {...register("projectdescription")}
                     placeholder="Describe your project requirements in detail"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                   ></textarea>
@@ -102,6 +122,7 @@ const Freelance = () => {
                       <FiDollarSign className="absolute left-3 top-3 text-gray-400" />
                       <input
                         type="text"
+                        {...register("porjectBudgetrange")}
                         placeholder="Enter your budget"
                         className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                       />
@@ -115,6 +136,7 @@ const Freelance = () => {
                       <FiClock className="absolute left-3 top-3 text-gray-400" />
                       <input
                         type="text"
+                        {...register("timeline")}
                         placeholder="Expected duration"
                         className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                       />
@@ -132,7 +154,7 @@ const Freelance = () => {
                         key={index}
                         className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50"
                       >
-                        <input type="checkbox" className="h-4 w-4 border-gray-300 rounded" />
+                        <input type="checkbox" {...register("category")} className="h-4 w-4 border-gray-300 rounded" />
                         <span className="ml-2 text-sm">{category}</span>
                       </label>
                     ))}

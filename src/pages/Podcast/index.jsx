@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { CubeIcon, figIcon, HtmlIcon } from '../../assets';
 
 const Podcast = () => {
   const episodes = [
@@ -10,7 +11,7 @@ const Podcast = () => {
       role: "Design Director at Google",
       duration: "45:30",
       date: "Oct 15, 2023",
-      image: "https://placehold.co/400x400",
+      image: CubeIcon,
       description: "Exploring how design systems help teams work more efficiently and maintain consistency across products."
     },
     {
@@ -20,7 +21,7 @@ const Podcast = () => {
       role: "UX Lead at Apple",
       duration: "38:15",
       date: "Oct 8, 2023",
-      image: "https://placehold.co/400x400",
+      image: figIcon,
       description: "Discussing emerging trends in UX design and how to prepare for the future of digital experiences."
     },
     {
@@ -30,7 +31,7 @@ const Podcast = () => {
       role: "Independent Designer",
       duration: "42:00",
       date: "Oct 1, 2023",
-      image: "https://placehold.co/400x400",
+      image: HtmlIcon,
       description: "Tips and strategies for building a successful freelance design career."
     }
   ];

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FiSearch, FiMapPin, FiDollarSign, FiClock, FiFilter } from 'react-icons/fi';
+import { CubeIcon, figIcon, HtmlIcon } from '../../assets';
 
 const FindWork = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,7 +14,7 @@ const FindWork = () => {
       location: 'Remote',
       salary: '$80k - $120k',
       type: 'Full-time',
-      logo: 'https://placehold.co/600x400',
+      logo: figIcon,
       posted: '2 days ago'
     },
     {
@@ -23,7 +24,7 @@ const FindWork = () => {
       location: 'Seattle, WA',
       salary: '$90k - $130k',
       type: 'Full-time',
-      logo: 'https://placehold.co/600x400',
+      logo: HtmlIcon,
       posted: '1 day ago'
     },
     {
@@ -33,7 +34,7 @@ const FindWork = () => {
       location: 'San Francisco, CA',
       salary: '$100k - $150k',
       type: 'Contract',
-      logo: 'https://placehold.co/600x400',
+      logo: CubeIcon,
       posted: '3 days ago'
     }
   ];

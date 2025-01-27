@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { User1, User2, User3 } from '../../assets';
 
 const Company = () => {
     const stats = [
@@ -32,19 +33,19 @@ const Company = () => {
         {
             name: "Sarah Johnson",
             role: "CEO",
-            image: "https://placehold.co/200x200",
+            image: User3,
             linkedin: "#"
         },
         {
             name: "Michael Chen",
             role: "Head of Design",
-            image: "https://placehold.co/200x200",
+            image: User1,
             linkedin: "#"
         },
         {
             name: "Emma Williams",
             role: "CTO",
-            image: "https://placehold.co/200x200",
+            image: User2,
             linkedin: "#"
         }
     ];

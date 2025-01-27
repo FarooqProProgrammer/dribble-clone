@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify';
 import React from 'react';
 import "@fontsource/poppins";
 import HeaderTop from './components/HeaderTop';
@@ -30,13 +31,14 @@ import Advertise from './pages/Advertise';
 import Contact from './pages/contact-us';
 import FaviconImage from './assets/favicon.ico';
 import Favicon from "react-favicon";
+import ScrollToTop from './hooks/useScrollToTop';
 
 
 const App = () => {
   return (
     <Router>
       <Favicon url={FaviconImage} />
-
+      <ScrollToTop />
       <div className="app-wrapper max-w-[2000px] mx-auto overflow-hidden">
         <HeaderTop />
         <Header />
@@ -51,7 +53,7 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/freelance" element={<Freelance />} />  
+            <Route path="/freelance" element={<Freelance />} />
             <Route path="/about" element={<About />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/support" element={<Support />} />
@@ -70,6 +72,7 @@ const App = () => {
         </main>
         <Footer />
       </div>
+      <ToastContainer />
     </Router>
   );
 }

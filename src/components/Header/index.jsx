@@ -8,7 +8,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const menuItems = [
-        { name: 'Inspiration', path: '/inspiration' },
+        // { name: 'Inspiration', path: '/inspiration' },
         { name: 'Find Work', path: '/find-work' },
         { name: 'Learn Design', path: '/learn-design' },
         { name: 'Go Pro', path: '/go-pro' },
@@ -42,12 +42,12 @@ const Header = () => {
                         <button className='text-[#6e6d7a] hover:text-[#0d0c22] transition-colors duration-300'>
                             <CiSearch className='w-5 h-5' />
                         </button>
-                        <button className='text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium transition-colors duration-300'>
+                        <Link to="/signin" className='text-[#6e6d7a] hover:text-[#0d0c22] text-sm font-medium transition-colors duration-300'>
                             Sign In
-                        </button>
-                        <button className='bg-[#ea4c89] hover:bg-[#df4881] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300'>
+                        </Link>
+                        <Link to="/signup" className='bg-[#ea4c89] hover:bg-[#df4881] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300'>
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}

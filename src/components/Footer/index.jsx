@@ -13,7 +13,7 @@ const Footer = () => {
       { name: 'Code of conduct', link: '/conduct' },
     ],
     hireDesigners: [
-      { name: 'Post a job opening', link: '/jobs/new' },
+      // { name: 'Post a job opening', link: '/jobs/new' },
       { name: 'Post a freelance project', link: '/freelance' },
       { name: 'Search for designers', link: '/designers' },
     ],

@@ -1,17 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiLock, FiUser, FiGithub } from 'react-icons/fi';
-import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { FiMail, FiLock, FiUser } from 'react-icons/fi';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth';
 
 const SignUp = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { signup } = useAuth();
+  const navigate = useNavigate(); // Use navigate to redirect the user after successful signup
+
+  const onSubmit = async (data) => {
+    try {
+      // Call the signup function from useAuth
+      await signup(data.email, data.password);
+
+      // After successful signup, redirect the user to the signin page (or another page as per your flow)
+      navigate('/signin');
+    } catch (error) {
+      // Handle any errors (e.g., server errors, validation errors)
+      console.error("Signup failed:", error);
+      // You can show a message to the user here (e.g., "Email already in use.")
+    }
+  };
+
   return (
     <>
       <Helmet>
-        <title>Sigin up | Dribble</title>
+        <title>Sign up | Dribble</title>
       </Helmet>
-
 
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -29,39 +47,58 @@ const SignUp = () => {
             </p>
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-4">
+              {/* Full Name Input */}
               <div className="relative">
                 <FiUser className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Full name"
                   className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                  {...register('fullName', { required: 'Full name is required' })}
                 />
+                {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName.message}</span>}
               </div>
+
+              {/* Email Input */}
               <div className="relative">
                 <FiMail className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="email"
                   placeholder="Email address"
                   className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                  {...register('email', { 
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                      message: 'Please enter a valid email address',
+                    }
+                  })}
                 />
+                {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
               </div>
+
+              {/* Password Input */}
               <div className="relative">
                 <FiLock className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="password"
                   placeholder="Password"
                   className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                  {...register('password', { required: 'Password is required' })}
                 />
+                {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
               </div>
             </div>
 
+            {/* Terms and Conditions */}
             <div className="flex items-center">
               <input
                 id="terms"
                 type="checkbox"
                 className="h-4 w-4 border-gray-300 rounded"
+                {...register('terms', { required: 'You must agree to the terms and privacy policy' })}
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
                 I agree to the{' '}
@@ -73,8 +110,10 @@ const SignUp = () => {
                   Privacy Policy
                 </Link>
               </label>
+              {errors.terms && <span className="text-red-500 text-sm">{errors.terms.message}</span>}
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
               className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 transition-colors"
@@ -82,30 +121,9 @@ const SignUp = () => {
               Create account
             </button>
           </form>
-
-          <div className="relative mt-8">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">Or continue with</span>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <button className="w-full flex items-center justify-center gap-3 py-2.5 border rounded-lg hover:bg-gray-50 transition-colors">
-              <FcGoogle className="text-xl" />
-              <span>Continue with Google</span>
-            </button>
-            <button className="w-full flex items-center justify-center gap-3 py-2.5 border rounded-lg hover:bg-gray-50 transition-colors">
-              <FiGithub className="text-xl" />
-              <span>Continue with GitHub</span>
-            </button>
-          </div>
         </motion.div>
       </div>
     </>
-
   );
 };
 
