@@ -68,6 +68,7 @@ const App = () => {
             <Route path="/company" element={<Company />} />
             <Route path="/advertise" element={<Advertise />} />
             <Route path="/contact-us" element={<Contact />} />
+            {/* <Route path="/jobs/new" element={<JobsNew />} /> Update the path */}
           </Routes>
         </main>
         <Footer />

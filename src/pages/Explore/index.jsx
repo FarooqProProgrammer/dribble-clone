@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const Explore = () => {
   const [selectedFilter, setSelectedFilter] = useState('popular');
@@ -61,11 +62,13 @@ const Explore = () => {
       </Helmet>
       <div className="min-h-screen bg-gray-50 px-4 py-8">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Explore Design Work</h1>
-            <p className="text-gray-600 mt-2">Trending designs to inspire you</p>
-          </div>
+          
+
+          <PageComponent 
+            title={'Explore Design Work'}
+            description={'Trending designs to inspire you'}
+            
+          />
 
           {/* Filters */}
           <div className="flex overflow-x-auto pb-2 mb-6 sm:mb-8 hide-scrollbar">

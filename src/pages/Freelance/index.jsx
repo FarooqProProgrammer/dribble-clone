@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FiDollarSign, FiClock, FiBriefcase, FiFileText, FiTag, FiUsers } from 'react-icons/fi';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import PageComponent from '../../components/PageComponent';
 
 const Freelance = () => {
 
@@ -71,10 +72,11 @@ const Freelance = () => {
           variants={itemVariants}
           className="text-center mb-12"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Post a Freelance Project</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-            Connect with talented designers and bring your project to life. Get matched with the perfect freelancer for your needs.
-          </p>
+          <PageComponent 
+            title={'Post a Freelance Project'}
+            description={'Connect with talented designers and bring your project to life. Get matched with the perfect freelancer for your needs.'}
+          
+          />
         </motion.div>
 
         <motion.div

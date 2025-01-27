@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const Careers = () => {
   const jobs = [
@@ -27,13 +28,11 @@ const Careers = () => {
 
       <div className="min-h-screen">
         {/* Hero Section */}
-        <div className="bg-pink-50 py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Join our team</h1>
-            <p className="text-xl text-gray-600 max-w-2xl">
-              Help us build the world's leading community for creatives to share, grow, and get hired.
-            </p>
-          </div>
+        <div className=" py-20">
+        <PageComponent 
+          title={'Join Our Team'}
+          description={'We are always looking for talented individuals to join our team.'}
+        />
 
         </div>
 

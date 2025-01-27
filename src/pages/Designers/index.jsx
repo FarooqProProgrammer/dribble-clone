@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const Designers = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -44,11 +45,13 @@ const Designers = () => {
 
       <div className="min-h-screen bg-gray-50 py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Find Designers</h1>
-            <p className="text-gray-600">Discover talented designers available for hire</p>
-          </div>
+        
+
+          <PageComponent 
+          
+            title={'Find Designers'}
+            description={'Discover talented designers available for hire'}
+          />
 
           {/* Search and Filters */}
           <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-8">

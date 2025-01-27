@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheck, FiStar, FiAward, FiZap } from 'react-icons/fi';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const GoPro = () => {
   const plans = [
@@ -60,10 +61,11 @@ const GoPro = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12 sm:mb-16"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Upgrade to Pro</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base px-4">
-          Take your design career to the next level with our premium features and resources.
-        </p>
+        
+        <PageComponent 
+          title={'Upgrade to Pro'}
+          description={'Take your design career to the next level with our premium features and resources.'}  
+        />
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4 sm:px-0">

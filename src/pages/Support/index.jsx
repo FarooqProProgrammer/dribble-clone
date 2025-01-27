@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { FiSearch, FiMail, FiMessageCircle, FiBook } from 'react-icons/fi'
+import PageComponent from '../../components/PageComponent'
 
 const Support = () => {
   const supportCategories = [
@@ -26,19 +27,12 @@ const Support = () => {
 
 
       <div className="min-h-screen">
-        {/* Hero Section */}
-        <div className="bg-pink-50 py-16">
-          <div className="max-w-6xl mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-8">How can we help you?</h1>
-            <div className="max-w-2xl mx-auto relative">
-              <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-              <input
-                type="text"
-                placeholder="Search for help..."
-                className="w-full pl-12 pr-4 py-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-pink-500"
-              />
-            </div>
-          </div>
+
+        <div className="py-10">
+          <PageComponent
+            title={'Support'}
+            description={'Find answers to your questions and get help with your Dribbble account. Our support team is here to assist you with any issues or inquiries you may have.'}
+          />
         </div>
 
         {/* Support Categories */}

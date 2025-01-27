@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import PageComponent from '../../components/PageComponent';
 
 const Advertise = () => {
     const [billingPeriod, setBillingPeriod] = useState('monthly');
@@ -76,36 +77,13 @@ const Advertise = () => {
                 <meta name="description" content="Advertise your job postings and reach millions of talented designers worldwide. Choose from flexible plans to find the perfect creative professionals for your team." />
             </Helmet>
             <div className="min-h-screen bg-gray-50">
-                {/* Hero Section */}
-                <div className="bg-[#EA4C89] text-white py-20 px-4">
-                    <div className="max-w-6xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                            Advertise on the World's Leading Design Platform
-                        </h1>
-                        <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-8">
-                            Reach millions of creative professionals and hire the perfect talent for your team.
-                        </p>
-                        <div className="inline-flex bg-white rounded-lg p-1">
-                            <button
-                                onClick={() => setBillingPeriod('monthly')}
-                                className={`px-6 py-2 rounded-md transition-colors ${billingPeriod === 'monthly'
-                                        ? 'bg-[#EA4C89] text-white'
-                                        : 'text-gray-600'
-                                    }`}
-                            >
-                                Monthly
-                            </button>
-                            <button
-                                onClick={() => setBillingPeriod('yearly')}
-                                className={`px-6 py-2 rounded-md transition-colors ${billingPeriod === 'yearly'
-                                        ? 'bg-[#EA4C89] text-white'
-                                        : 'text-gray-600'
-                                    }`}
-                            >
-                                Yearly (Save 10%)
-                            </button>
-                        </div>
-                    </div>
+                
+
+                <div className="sm:pt-10 pt-5">
+                    <PageComponent
+                        title={'Advertise on the World\'s Leading Design Platform'}
+                        description={'Reach millions of creative professionals and hire the perfect talent for your team.'}
+                    />
                 </div>
 
                 {/* Pricing Plans */}
@@ -115,8 +93,8 @@ const Advertise = () => {
                             <div
                                 key={index}
                                 className={`bg-white rounded-xl p-8 ${plan.recommended
-                                        ? 'ring-2 ring-[#EA4C89] relative'
-                                        : 'shadow-sm'
+                                    ? 'ring-2 ring-[#EA4C89] relative'
+                                    : 'shadow-sm'
                                     }`}
                             >
                                 {plan.recommended && (
@@ -140,8 +118,8 @@ const Advertise = () => {
                                     ))}
                                 </ul>
                                 <button className={`w-full py-3 rounded-lg ${plan.recommended
-                                        ? 'bg-[#EA4C89] text-white hover:bg-opacity-90'
-                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    ? 'bg-[#EA4C89] text-white hover:bg-opacity-90'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     } transition-colors duration-200`}>
                                     Get Started
                                 </button>
